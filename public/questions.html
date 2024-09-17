@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/questions.css" />
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+  </head>
+
+  <body>
+    <main>
+      <div class="modal">
+        <div class="heading">
+          <p>Submit Test</p>
+        </div>
+        <div class="modalbody">
+          <p id="actMessage"></p>
+        </div>
+        <div class="modalbtns">
+          <button onclick="actionfulfil()">Yes</button>
+          <button onclick="closeModal()">No</button>
+        </div>
+      </div>
+      <div class="main-container">
+        <div class="content">
+          <div class="buttons">
+            <button onclick="action(1)">Exit</button>
+            <p id="countdown">01 : 00</p>
+            <button id="sub" onclick="action(2)">Submit</button>
+          </div>
+          <div class="question-section">
+            <div class="instruction">
+              <p>Part 1 Read the text below and answer questions 1-13</p>
+            </div>
+            <div class="questions">
+              <div class="passage">
+                <div class="passageTopic">
+                  <strong class="passageTopic" style="font-size: 20px"
+                    >Lorem ipsum dolor sit amet.</strong
+                  >
+                </div>
+                <textarea id="questioPage" readonly>
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero rem dolore similique quod doloribus!** Laborum, dignissimos laboriosam, ea amet eos neque sit minus eveniet, natus labore temporibus ipsum exercitationem ratione recusandae blanditiis rerum magnam doloremque dolore animi hic! Reprehenderit error explicabo voluptatibus atque nihil cumque itaque suscipit quo a illo dolores vel voluptatum nobis vitae, adipisci minima. Nobis itaque facilis expedita et consequatur autem reprehenderit molestias vel temporibus voluptas. Doloremque, architecto. Saepe, deserunt. Voluptas aliquam qui accusamus fugiat facere eligendi culpa at cumque incidunt quod eum magni nesciunt beatae fuga ducimus, quae, hic et. Officia placeat sunt adipisci perspiciatis nostrum nam praesentium beatae harum velit magni. Debitis vero, sit atque quod voluptatibus aut ad soluta eaque iste architecto expedita nostrum iure natus omnis illo voluptatem! Vero, cupiditate reprehenderit hic nostrum, excepturi, facilis ullam ex rerum modi animi iste. Reiciendis omnis veniam minus sapiente soluta tempora similique ad unde illum! Iusto animi quis aliquam aliquid recusandae explicabo rerum vitae ipsa doloremque voluptatibus! Aut repellat inventore est eaque ducimus molestiae ullam officiis expedita sed, aliquid adipisci, enim veniam! Inventore soluta dolorem vitae dolores explicabo, facere a provident molestias officiis minima perferendis voluptate eaque voluptatibus! Velit, adipisci asperiores! Officia hic veniam deserunt dicta tenetur illo, odio, error iure magni perferendis ipsa impedit maiores illum nostrum vero ab totam ratione, corrupti minima cum voluptas molestias voluptatum? Error, ea adipisci vitae suscipit eveniet quisquam libero deserunt molestias ipsa! Labore, iste eum at tenetur aliquam quis necessitatibus eaque placeat inventore! Beatae accusantium ipsum illo atque. Veniam nihil molestiae ea provident facilis iste unde. Enim necessitatibus nisi rem molestias dolorum cupiditate fugiat accusamus tenetur maxime molestiae, magni doloremque debitis rerum eveniet pariatur, aliquid dolores doloribus corporis. Voluptatibus a, quidem qui placeat tempora officiis facere corrupti error eligendi sit repellat quisquam ipsum. Magni tempore mollitia architecto explicabo voluptatem provident ratione odit autem minus ad corrupti earum qui, dolorem molestiae perferendis tempora incidunt blanditiis ab error numquam cupiditate quam quos. Eligendi, nemo autem est, ea distinctio itaque nostrum explicabo praesentium dolorem, repudiandae consequuntur eum. Et temporibus harum, accusamus dolore animi eum explicabo maiores, soluta nisi quisquam maxime possimus ducimus sint odio tempore veritatis ad sunt aliquam quas inventore amet? Quaerat, tenetur ipsam? Doloremque at, repellendus amet temporibus fugiat ex quae perspiciatis adipisci dignissimos sunt dolore laborum aspernatur nulla deserunt tempora aut. Et, nam! Blanditiis, voluptatibus. Amet nobis ratione aperiam, cupiditate iste eum magni! Qui reiciendis pariatur quaerat maxime molestiae eveniet! Velit laudantium accusantium quo tenetur dolor hic et, totam odit mollitia quis aspernatur necessitatibus, nemo temporibus nisi. Pariatur ullam esse ratione inventore animi iusto, in eius? Magnam velit asperiores ad cupiditate! Natus voluptatibus explicabo animi atque rem ullam inventore necessitatibus! Non deleniti autem, architecto animi quibusdam necessitatibus aliquid aspernatur tempora molestiae ab dicta dignissimos beatae dolor magni cumque vitae minus. Quibusdam, optio repudiandae doloribus unde ipsam a porro excepturi omnis dolorum in, deleniti molestiae dolores sint. Adipisci fugiat nostrum unde beatae ex, suscipit quas molestiae, repellendus quod itaque soluta dolores dolor esse labore dolorem, at alias maiores corporis saepe.
+                </textarea>
+              </div>
+              <div class="answer">
+                <div class="instructions"></div>
+                <div class="question"></div>
+                <div class="options">
+                    
+                    <p style="display: flex; align-items: center; justify-content: center;">Loading questions...</p>
+                </div>
+              </div>
+            </div>
+            <div class="progress">
+              <p>Part 1</p>
+            </div>
+          </div>
+          <div class="control">
+            <button id="prev" onclick="backward()">Previous</button>
+            <button id="next" onclick="forward()">Next</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <script src="questions.js"></script>
+  </body>
+</html>
