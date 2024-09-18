@@ -149,6 +149,7 @@ async function readDatabase() {
   for (let x = 0; x < questnumb; x++) {
     progress.innerHTML += `<button class="btn">${x + 1}</button>`;
     answers.push({ ans: false, value: "" });
+    // answers[0]['ans'] == false || answers[0]['value'] == "" ?  answers.push({ ans: false, value: "" }) : "";
   }
 
   init();
@@ -255,7 +256,7 @@ async function actionfulfil() {
     console.log(docref);
     
     
-    for (let i = 0; i < quest; i++) {
+    for (let i = 0; i < questnumb; i++) {
       await db
       .collection(`answers ${docref}`)
       .doc()
@@ -271,10 +272,12 @@ async function actionfulfil() {
         console.error("Error writing document: ", error);
       })      
     }
-      alert("Test Submitted");
+    console.log(answers);
+    
+      // alert("Test Submitted");
   }
 
-  act == 1 ? "" : (window.location.href = "./index.html");
+  // act == 1 ? "" : (window.location.href = "./index.html");
 }
 function chkans() {
   //   console.log("yes");
