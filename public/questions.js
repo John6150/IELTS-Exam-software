@@ -153,6 +153,7 @@ async function readDatabase() {
 
   init();
   qGen();
+  countdown();
 }
 readDatabase();
 
@@ -208,7 +209,7 @@ function countdown() {
     }
   }, 1000);
 }
-countdown();
+
 
 function answer(ans) {
   answers[quest - 1]["ans"] = true;
