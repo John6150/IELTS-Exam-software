@@ -14,6 +14,7 @@ let germananswer = document.getElementsByClassName("germananswer");
 let counter = document.getElementById("countdown");
 
 let ar = [];
+let docref = '0';
 let quest = 1;
 let current = document.getElementsByClassName("btn")[quest - 1];
 let act;
@@ -135,7 +136,6 @@ async function readDatabase() {
         };
         // console.log(doc.data().questions.challenge[0].questioncontents);
       });
-
     });
   instruction.innerHTML =
     questions["challenge"][0]["questioncontents"][0]["instructions"];
@@ -156,16 +156,6 @@ async function readDatabase() {
   countdown();
 }
 readDatabase();
-
-// querySnapshot.docs[0]._delegate._document.data.value.mapValue.fields.questions.mapValue.fields.challenge.arrayValue.values[0].mapValue.fields.questioncontents.arrayValue.values.forEach(
-//     (e) => {
-//       return {
-//         'type': e.mapValue.fields.type.stringValue,
-//         'instructions': e.mapValue.fields.instruction,
-//         'question': e.mapValue.fields.question.stringValue,
-//       };
-//     }
-//   ),
 
 function init() {
   quest == 1
@@ -210,7 +200,6 @@ function countdown() {
   }, 1000);
 }
 
-
 function answer(ans) {
   answers[quest - 1]["ans"] = true;
   answers[quest - 1]["ans"]
@@ -223,6 +212,9 @@ function answer(ans) {
   ans == undefined
     ? (answers[quest - 1]["value"] = `${germananswer[0].value}`)
     : (answers[quest - 1]["value"] = ans);
+  answers[quest - 1]["question number"] = quest;
+  answers[quest - 1]["question"] =
+    questions["challenge"][0]["questioncontents"][quest - 1]["question"];
 }
 
 function backward() {
@@ -249,9 +241,39 @@ function closeModal() {
   modal.style.display = "none";
 }
 
-function actionfulfil() {
+async function actionfulfil() {
   closeModal();
-  act == 1 ? (window.location.href = "./index.html") : alert("Test Submitted");
+  const db = firebase.firestore();
+
+  if (act == 1) {
+    window.location.href = "./index.html";
+  } else {
+
+    for (let index = 0; index < 6; index++) {
+      docref += Math.floor(Math.random()*10) 
+    }
+    console.log(docref);
+    
+    
+    for (let i = 0; i < quest; i++) {
+      await db
+      .collection(`answers ${docref}`)
+      .doc()
+      .set({
+        answer: `${answers[i]['value']}`,
+        question: `${answers[i]['question']}`,
+        questionnumber: `${answers[i]['question number']}`,
+      })
+      .then(() => {
+        console.log("Document successfully written!");
+      })
+      .catch((error) => {
+        console.error("Error writing document: ", error);
+      })      
+    }
+      alert("Test Submitted");
+  }
+
   act == 1 ? "" : (window.location.href = "./index.html");
 }
 function chkans() {
@@ -383,7 +405,5 @@ function qGen() {
       break;
   }
 }
-
-
 
 // console.log(questions);
