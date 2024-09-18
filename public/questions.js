@@ -274,10 +274,10 @@ async function actionfulfil() {
     }
     console.log(answers);
     
-      // alert("Test Submitted");
+      alert("Test Submitted");
   }
 
-  // act == 1 ? "" : (window.location.href = "./index.html");
+  act == 1 ? "" : (window.location.href = "./index.html");
 }
 function chkans() {
   //   console.log("yes");
