@@ -14,7 +14,7 @@ let germananswer = document.getElementsByClassName("germananswer");
 let counter = document.getElementById("countdown");
 
 let ar = [];
-let docref = '0';
+let docref = "0";
 let quest = 1;
 let current = document.getElementsByClassName("btn")[quest - 1];
 let act;
@@ -249,35 +249,29 @@ async function actionfulfil() {
   if (act == 1) {
     window.location.href = "./index.html";
   } else {
-
     for (let index = 0; index < 6; index++) {
-      docref += Math.floor(Math.random()*10) 
+      docref += Math.floor(Math.random() * 10);
     }
     console.log(docref);
-    
-    
+
     for (let i = 0; i < questnumb; i++) {
       await db
-      .collection(`answers ${docref}`)
-      .doc()
-      .set({
-        answer: `${answers[i]['value']}`,
-        question: `${answers[i]['question']}`,
-        questionnumber: `${answers[i]['question number']}`,
-      })
-      .then(() => {
-        console.log("Document successfully written!");
-      })
-      .catch((error) => {
-        console.error("Error writing document: ", error);
-      })      
+        .collection(`answers ${docref}`)
+        .doc()
+        .set({
+          answer: `${answers[i]["value"]}`,
+          question: `${answers[i]["question"]}`,
+          questionnumber: `${answers[i]["question number"]}`,
+        })
+        .then(() => {
+          alert("Test Submitted");
+          act == 1 ? "" : (window.location.href = "./index.html");
+        })
+        .catch((error) => {
+          console.error("Error writing document: ", error);
+        });
     }
-    console.log(answers);
-    
-      alert("Test Submitted");
   }
-
-  act == 1 ? "" : (window.location.href = "./index.html");
 }
 function chkans() {
   //   console.log("yes");
